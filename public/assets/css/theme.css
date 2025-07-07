@@ -1,0 +1,23 @@
+@import "../plugins/datatables/dataTables.bootstrap4.min.css";
+@import "../plugins/datatables/buttons.bootstrap4.min.css";
+@import "../plugins/datatables/responsive.bootstrap4.min.css";
+@import "../plugins/datatables/select.bootstrap4.min.css";
+@import "../plugins/custombox/dist/custombox.min.css";
+@import "../plugins/switchery/switchery.min.css";
+@import "../plugins/select2/dist/css/select2.min.css";
+@import "../plugins/icheck-bootstrap/icheck-bootstrap.min.css";
+@import "bootstrap.min.css";
+@import "icons.css";
+@import "../themify-icons/themify-icons.min.css";
+@import "../pe-icon-7-stroke/css/pe-icon-7-stroke.css";
+@import "../pe-icon-7-stroke/css/helper.css";
+@import "colors.css";
+@import "style.css";
+@import "custom.css";
+
+.popover-header{
+    background-color: #977229 !important;
+}
+.popover{
+    /*background-color:red;*/
+}
