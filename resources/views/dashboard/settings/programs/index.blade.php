@@ -35,7 +35,14 @@
                                 <table id="programTable" class="table table-bordered table-hover table-striped" style="width: 100%;">
                                    <thead>
                                    <tr>
-                                       <th>S/No</th>   <th>Program Name(Code)-(Acronym)</th> <th>program Type</th><th>program Duration</th><th>Program Total</th><th>Tuition Fee</th><th>Academic Year</th> <th>Actions</th>
+                                       <th>S/No</th>  
+                                        <th>Program Name(Code)-(Acronym)</th>
+                                         <th>program Type</th>
+                                         <th>program Duration</th>
+                                         <th>Program Total</th>
+                                         <th>Tuition Fee</th>
+                                         <th>Academic Year</th>
+                                          <th>Actions</th>
                                    </tr>
                                    </thead>
                                     <tbody></tbody>

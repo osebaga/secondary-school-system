@@ -163,7 +163,7 @@ class DatabaseSeeder extends Seeder
     {
         $id = Institution::create([
 
-            'institution_name' => 'Kange College of Health and Allied Sciences',
+            'institution_name' => 'SECONDARY SCHOOL',
             'institution_acronym' => 'KACOHAS',
 
         ])->id;
@@ -174,7 +174,7 @@ class DatabaseSeeder extends Seeder
     {
         $campus_id = Campus::create([
             'institution_id' => $id,
-            'campus_name' => 'Kange Main Campus',
+            'campus_name' => 'KANGE Main Campus',
             'campus_acronym' => 'DSM',
         ])->id;
         // $campus_id2 = Campus::create([

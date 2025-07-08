@@ -180,7 +180,7 @@
                     <a href="javascript: void(0);" class="waves-effect">
                         <i class="fa-fw fa fa-book"></i>
                         <span class="menu-arrow"></span>
-                        <span>Secondary School</span>
+                        <span>SECONDARY SCHOOL</span>
                     </a>
                     <ul class="nav-second-level" aria-expanded="false">
                         @can('module-allocation')
@@ -375,13 +375,13 @@
 
                         @can('programs-view')
                             <li><a href="{{ route('program-courses.program') }}">
-                                    <span>Program/Division</span></a></li>
+                                    <span>Program/Combination</span></a></li>
                         @endcan
                         @can('limit-registration')
                             <li>
                                 <a href="{{ route('administrations.campus', 'limit-course-registration') }}">
 
-                                    Module Enroll Deadline
+                                    Subject Enroll Deadline
                                 </a>
                             </li>
                         @endcan

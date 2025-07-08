@@ -2,7 +2,7 @@
 
 @section('title-content')
 
-    <title>{{ config('app.name') }} |Programs >> Create</title>
+    <title>{{ config('app.name') }} |Program</title>
 
 @endsection
 
@@ -14,7 +14,7 @@
         <div class="boxpane">
             <div class="boxpane-header">
                 <h2 class="blue">
-                    Add Program
+                    Add Program/Combination
                 </h2>
 
                 <div class="boxpane-icon">
@@ -48,20 +48,20 @@
 
                                 <div class="row">
 
-                                    <div class="col-sm-6">
+                                    {{-- <div class="col-sm-6">
                                         <div class="form-group">
 
                                             {!! Form::label('faculty_id','Select Faculty') !!}
                                             {!! Form::select('faculty_id', $faculties,null, $errors->has('faculty_id') ? ['class' => 'form-control is-invalid','id'=>'faculty_id'] : ['class' => 'form-control','id'=>'faculty_id']) !!}
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
+                                    </div> --}}
+                                    {{-- <div class="col-sm-6">
                                         <div class="form-group">
 
-                                            {!! Form::label('year_id','Select Academic Year') !!}
+                                            {!! Form::label('year_id','Select Year') !!}
                                             {!! Form::select('year_id', $academic_years,null, $errors->has('year_id') ? ['class' => 'form-control is-invalid','id'=>'year_id'] : ['class' => 'form-control','id'=>'year_id']) !!}
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -110,13 +110,13 @@
                                             {!! Form::select('program_type', $program_types,null, $errors->has('program_type') ? ['class' => 'form-control is-invalid','id'=>'program_type'] : ['class' => 'form-control','id'=>'program_type']) !!}
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    {{-- <div class="col-sm-3">
                                         <div class="form-group">
 
                                             {!! Form::label('program_category','Select Category') !!}
                                             {!! Form::select('program_category', $program_category,null, $errors->has('program_category') ? ['class' => 'form-control is-invalid','id'=>'program_category'] : ['class' => 'form-control','id'=>'program_category']) !!}
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-sm-3">
                                         <div class="form-group">
 
@@ -124,7 +124,7 @@
                                             {!! Form::select('program_duration', $program_duration,null, $errors->has('program_duration') ? ['class' => 'form-control is-invalid','id'=>'program_duration'] : ['class' => 'form-control','id'=>'program_duration']) !!}
                                         </div>
                                     </div>
-                                    <div class="col-sm-3">
+                                    {{-- <div class="col-sm-3">
                                         <div class="form-group">
                                             {!! Form::label('program_weight','Program Weight*') !!}
                                             {!! Form::text('program_weight', old('program_weight'), $errors->has('program_weight') ? ['placeholder' => 'Program Weight','class' => 'form-control is-invalid'] : ['placeholder' => 'Program Weight','class' => 'form-control']) !!}
@@ -135,8 +135,8 @@
                                             @endif
                                         </div>
 
-                                    </div>
-                                    <div class="col-sm-3">
+                                    </div> --}}
+                                    {{-- <div class="col-sm-3">
                                         <div class="form-group">
                                             {!! Form::label('tuition_fee','Program Fee*') !!}
                                             {!! Form::text('tuition_fee', old('tuition_fee'), $errors->has('tuition_fee') ? ['placeholder' => 'Program Fee','class' => 'form-control is-invalid'] : ['placeholder' => 'Program Fee','class' => 'form-control']) !!}
@@ -147,7 +147,7 @@
                                             @endif
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-12">
                                         <div class="form-group">

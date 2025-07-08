@@ -14,7 +14,7 @@
             <div class="boxpane">
                 <div class="boxpane-header">
                     <h2 class="blue">
-                    Programme List
+                    Programme/Combination List
                     </h2>
                     <div class="boxpane-icon">
 
@@ -33,13 +33,16 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <p class="introtext">
-                                The following is the list of Programmes available 
+                                The following is the list of Program/Combination available 
                             </p>
                             <div class="table-responsive">
                                 <table id="campusTable" class="table table-bordered table-hover" style="width: 100%;">
                                     <thead>
                                     <tr>
-                                        <th>SN</th> <th>Name</th><th>Duration</th><th>Actions</th>
+                                        <th>SN</th> 
+                                        <th>Name</th>
+                                        <th>Duration</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -59,7 +62,7 @@
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    $config_link = link_to(route('program-courses.program-config', SRS::encode($p->id)), '<i class="ion-android-settings p-2"></i>Add Semester Modules', 'class="sledit"');
+                                                    $config_link = link_to(route('program-courses.program-config', SRS::encode($p->id)), '<i class="ion-android-settings p-2"></i>Add Subjects', 'class="sledit"');
                                                     $edit_link = link_to(route('programs.edit', SRS::encode($p->id)), '<i class="fa fa-edit  p-2"></i>', 'class="sledit"');
                                                     $delete_link = "<a href='#' class='po' title='<b>" . ("Delete Program") . "</b>' data-content=\"<p>"
                                                         . trans('app.r_u_sure') . "</p><a class='btn btn-danger po-delete' href='" . route('programs.destroy', SRS::encode($p->id)) . "'>"

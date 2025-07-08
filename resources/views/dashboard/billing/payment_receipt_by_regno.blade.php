@@ -5,7 +5,7 @@
 </p>
 {{--  <p style="text-align: center;margin: 0.07in 2.53in 0in;background: transparent;font-family: Cambria, serif;font-size:13px;line-height: 131%;"><span style="font-size: 14px;">Jamhuri ya Muungano wa Tanzania United Republic of Tanzania</span></p>  --}}
 <p style="line-height: 100%;text-align: center;margin-bottom: 0in;background: transparent;margin-top: 0.09in;"><span
-        size="3" style="font-size: 14px;"><strong>KANGE COLLEGE OF HEALTH AND ALLIED SCIENCES</strong></span></p>
+        size="3" style="font-size: 14px;"><strong>SECONDARY SCHOOL</strong></span></p>
 <p
     style="line-height: 131%; text-align: center; margin-bottom: 0in; background: transparent; font-family: Cambria, serif; font-size: 13px; margin-right: 2.55in; margin-top: 0.09in;">
     <span style="font-size: 14px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

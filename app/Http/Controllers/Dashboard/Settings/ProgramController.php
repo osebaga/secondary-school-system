@@ -12,6 +12,7 @@ use App\Models\Program;
 use App\Repositories\Common\Repository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\StudyLevel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
@@ -123,13 +124,14 @@ class ProgramController extends Controller
             '2' => '2 Years',
             '3' => '3 Years',
             '4' => '4 Years',
-            '5' => '5 Years',
+            // '5' => '5 Years',
         ];
         // dd($academic_years,$approval,$program_types,$program_category);
 
         // $data['academic_years'] = $academic_years;
         $data['approval'] = $approval;
-        $data['program_types'] = $program_types;
+        $data['program_types'] = ['' => 'Select Program Type'] + StudyLevel::pluck('level_name', 'id')->toArray(); // ['id' => 'level_name'];
+
         $data['program_category'] = $program_category;
         $data['program_duration'] = $program_duration;
         // $data['faculties'] = $faculties;
@@ -156,7 +158,7 @@ class ProgramController extends Controller
             'program_code' => 'required',
             'program_acronym' => 'required',
             'program_type' => 'required',
-            'program_category' => 'required',
+            // 'program_category' => 'required',
             'program_duration' => 'required',
             // 'program_weight' => 'required',
             'is_approved' => 'required',
@@ -240,12 +242,12 @@ class ProgramController extends Controller
             '2' => '2 Years',
             '3' => '3 Years',
             '4' => '4 Years',
-            '5' => '5 Years',
+            // '5' => '5 Years',
         ];
         // dd($academic_years,$approval,$program_types,$program_category);
         $data['academic_years'] = $academic_years;
         $data['approval'] = $approval;
-        $data['program_types'] = $program_types;
+        $data['program_types'] = ['' => 'Select Program Type'] + StudyLevel::pluck('level_name', 'id')->toArray(); // ['id' => 'level_name'];
         $data['program_category'] = $program_category;
         $data['program_duration'] = $program_duration;
         $data['faculties'] = $faculties;
@@ -269,16 +271,16 @@ class ProgramController extends Controller
         $input = $request->all();
         $id = SRS::decode($id)[0];
         $validator = Validator::make($input, [
-            'faculty_id' => 'required',
-            'year_id' => 'required',
+            // 'faculty_id' => 'required',
+            // 'year_id' => 'required',
             'program_code' => 'required',
             'program_acronym' => 'required',
             'program_type' => 'required',
-            'program_category' => 'required',
+            // 'program_category' => 'required',
             'program_duration' => 'required',
-            'program_weight' => 'required',
+            // 'program_weight' => 'required',
             'is_approved' => 'required',
-            'tuition_fee' => 'required',
+            // 'tuition_fee' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withInput()->with('errors', $validator->errors());

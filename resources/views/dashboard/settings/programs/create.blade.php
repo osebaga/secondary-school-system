@@ -2,7 +2,7 @@
 
 @section('title-content')
 
-    <title>{{ config('app.name') }} |Programs</title>
+    <title>{{ config('app.name') }} |Program</title>
 
 @endsection
 
@@ -13,7 +13,7 @@
         <div class="boxpane">
             <div class="boxpane-header">
                 <h2 class="blue">
-                    Programme
+                    Program/combination
                 </h2>
 
                 <div class="boxpane-icon">
@@ -27,7 +27,7 @@
                                 aria-labelledby="dLabel">
                                 <li>
                                     <a href="{{route('programs.index')}}">
-                                        <i class="mdi mdi-18px mdi-view-list"></i>
+                                        <i class="mdi mdi-30px mdi-view-list"></i>
                                         {{"View Programs"}}
                                     </a>
                                 </li>
@@ -96,6 +96,7 @@
                                             {!! Form::select('program_type', $program_types,null, $errors->has('program_type') ? ['class' => 'form-control is-invalid','id'=>'program_type'] : ['class' => 'form-control','id'=>'program_type']) !!}
                                         </div>
                                     </div>
+
                                     {{-- <div class="col-sm-3">
                                         <div class="form-group">
 
@@ -137,7 +138,7 @@
         });
         $('#year_id').select2({
             minimumResultsForSearch: -1,
-            placeholder:  'Select Academic Year',
+            placeholder:  'Select Year',
         });
         $('#is_approved').select2({
             minimumResultsForSearch: -1,

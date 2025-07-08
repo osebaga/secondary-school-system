@@ -1322,7 +1322,7 @@ CREATE TABLE `campuses` (
 --
 
 INSERT INTO `campuses` (`id`, `institution_id`, `campus_name`, `campus_acronym`, `address`, `tel`, `email`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Kange Secondary School', 'KSS', NULL, NULL, NULL, '2020-12-30 15:35:32', '2025-07-07 08:41:02');
+(1, 1, 'KANGE SECONDARY SCHOOL', 'KSS', NULL, NULL, NULL, '2020-12-30 15:35:32', '2025-07-07 08:41:02');
 
 -- --------------------------------------------------------
 
@@ -6102,7 +6102,7 @@ CREATE TABLE `institutions` (
 --
 
 INSERT INTO `institutions` (`id`, `institution_name`, `institution_acronym`, `address`, `tel`, `fax`, `email`, `website`, `city`, `created_at`, `updated_at`) VALUES
-(1, 'Kange Secondary School', 'KASS', 'P.O BOX 5079 TANGA', '0672187936', NULL, 'kacohas2022@gmail.com', 'kacohas.ac.tz', 'TANGA', '2020-12-30 15:35:32', '2025-07-07 08:40:14');
+(1, 'KANGE SECONDARY SCHOOL', 'KASS', 'P.O BOX 5079 TANGA', '0672187936', NULL, 'kacohas2022@gmail.com', 'kacohas.ac.tz', 'TANGA', '2020-12-30 15:35:32', '2025-07-07 08:40:14');
 
 -- --------------------------------------------------------
 

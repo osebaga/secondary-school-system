@@ -88,7 +88,7 @@
             </style>
         </head>
         <div class="top-bar" style="margin-left: 10%">
-            <p>KANGE COLLEGE OF HEALTH AND ALLIED SCIENCES <br>STUDENT ACADEMIC MANAGEMENT INFORMATION SYSTEM</p>
+            <p>SECONDARY SCHOOL <br>STUDENT ACADEMIC MANAGEMENT INFORMATION SYSTEM</p>
 
         </div>
 

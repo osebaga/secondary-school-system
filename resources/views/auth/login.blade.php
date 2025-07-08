@@ -119,7 +119,7 @@
     {{-- <footer class="footer footer-alt">
         <script>
             document.write(new Date().getFullYear())
-        </script> &copy; Kange College of Health and Allied Sciences <a href="https://kacohas.ac.tz" class="text-dark">Kacohas</a>
+        </script> &copy; SECONDARY SCHOOL <a href="https://kacohas.ac.tz" class="text-dark">Kacohas</a>
     </footer> --}}
     <script src="{{ asset('loginAssets/js/vendor.min.js') }}"></script>
     <script src="{{ asset('loginAssets/js/app.min.js') }}"></script>
