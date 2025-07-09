@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Course Registrations  Limit
+    Subject Registrations  Limit
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                 <div class="boxpane">
                     <div class="boxpane-header">
                         <h2 class="blue">
-                            Course Registration  Limit-[{{$campus->campus_name}}]-Intake of [{{$intake->name}}]
+                            Subject Registration  Limit-[{{$campus->campus_name}}]-Class of [{{$intake->name}}]
                         </h2>
 
                         <div class="boxpane-icon">
@@ -27,7 +27,7 @@
                                 <fieldset class="customLegend row">
                                     <legend>
                                         <h2 class="blue pb-0 mb-0">
-                                            Semester (I) Course Registration </h2>
+                                            Class Subject Registration </h2>
                                     </legend>
                                     <table class="table table-bordered table-striped" style="width: 100%;">
                                         <thead>
@@ -37,9 +37,9 @@
                                             <th>
                                                 @if(is_null($sem1_course_reg))
 
-                                                    Course Registration is currently closed
+                                                    Subject Registration is currently closed
                                                 @else
-                                                    Course Registration  is currently opened
+                                                    Subject Registration  is currently opened
 
                                                 @endif
 
@@ -56,17 +56,17 @@
                                                 {!! Form::open(['route' => ['administrations.openCourseRegistration',1],'method'=>'POST','role' => 'form']) !!}
                                                 {!! Form::hidden('campus_id',SRS::encode($campus_id)) !!}
                                                 {!! Form::hidden('intake_category_id',SRS::encode($intake_id)) !!}
-                                                {!! Form::button('[Open Online Course Registration]',['type'=>'submit','class'=>'btn btn-sm btn-primary p-2']) !!}
+                                                {!! Form::button('[Open Online Subject Registration]',['type'=>'submit','class'=>'btn btn-sm btn-primary p-2']) !!}
                                                 {!! Form::close() !!}
                                             @else
                                                 {!! Form::open(['route' => ['administrations.closeCourseRegistration',1],'method'=>'POST','role' => 'form']) !!}
                                                 {!! Form::hidden('campus_id',SRS::encode($campus_id)) !!}
                                                 {!! Form::hidden('intake_category_id',SRS::encode($intake_id)) !!}
-                                                {!! Form::button('[Close online Course Registration]',['type'=>'submit','class'=>'btn btn-sm btn-danger p-2']) !!}
+                                                {!! Form::button('[Close online Subject Registration]',['type'=>'submit','class'=>'btn btn-sm btn-danger p-2']) !!}
                                                 {!! Form::close() !!}
                                             @endif
 
-                                                                </span>
+                                                </span>
                                                 </li>
 
                                             </ul>
@@ -79,19 +79,19 @@
                                 <fieldset class="customLegend row">
                                     <legend>
                                         <h2 class="blue pb-0 mb-0">
-                                            Semester (II) Course Registration</h2>
+                                            Class Subject Registration</h2>
                                     </legend>
                                     <table class="table table-bordered table-striped" style="width: 100%;">
                                         <thead>
                                         <tr>
-                                            <th>Course Registration Status :</th>
+                                            <th>Subject Registration Status :</th>
 
                                             <th>
                                                 @if(is_null($sem2_course_reg))
 
-                                                    Course Registration is currently closed
+                                                    Subject Registration is currently closed
                                                 @else
-                                                    Course Registration is currently opened
+                                                    Subject Registration is currently opened
                                                 @endif
 
                                             </th>
@@ -107,17 +107,17 @@
                                                 {!! Form::open(['route' => ['administrations.openCourseRegistration',2],'method'=>'POST','role' => 'form']) !!}
                                                 {!! Form::hidden('campus_id',SRS::encode($campus_id)) !!}
                                                 {!! Form::hidden('intake_category_id',SRS::encode($intake_id)) !!}
-                                                {!! Form::button('[Open Online Course Registration]',['type'=>'submit','class'=>'btn btn-sm btn-primary p-2']) !!}
+                                                {!! Form::button('[Open Online Subject Registration]',['type'=>'submit','class'=>'btn btn-sm btn-primary p-2']) !!}
                                                 {!! Form::close() !!}
                                             @else
                                                 {!! Form::open(['route' => ['administrations.closeCourseRegistration',2],'method'=>'POST','role' => 'form']) !!}
                                                 {!! Form::hidden('campus_id',SRS::encode($campus_id)) !!}
                                                 {!! Form::hidden('intake_category_id',SRS::encode($intake_id)) !!}
-                                                {!! Form::button('[Close Online Course Registration]',['type'=>'submit','class'=>'btn btn-sm btn-danger p-2']) !!}
+                                                {!! Form::button('[Close Online Subject Registration]',['type'=>'submit','class'=>'btn btn-sm btn-danger p-2']) !!}
                                                 {!! Form::close() !!}
                                             @endif
 
-                                                                </span>
+                                                 </span>
                                                 </li>
 
                                             </ul>

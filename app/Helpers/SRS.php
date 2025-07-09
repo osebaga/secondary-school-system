@@ -109,20 +109,21 @@ class SRS
         }
     }
 
-    public static function year_level($year)
+    public static function year_level($year,$study_level)
     {
-        if ($year == 1) {
+        
+        if ($year == 1 && $study_level == 2) {
+            return 'Form ' . ' V';
+        } elseif ($year == 2 && $study_level == 2) {
+            return 'Form' . ' VI';
+        } elseif ($year == 1 ) {
             return 'Form ' . ' I';
         } elseif ($year == 2) {
-            return 'Form' . ' II';
+            return 'Form ' . ' II';
         } elseif ($year == 3) {
             return 'Form ' . ' III';
-        } elseif ($year == 4) {
+        }elseif ($year == 4) {
             return 'Form ' . ' IV';
-        } elseif ($year == 5) {
-            return 'Form ' . ' V';
-        }elseif ($year == 6) {
-            return 'Form ' . ' VI';
         }
     }
 
@@ -144,14 +145,14 @@ class SRS
     public static function program_type($type)
     {
         switch ($type) {
-            case 'Masters - Trimester':
-                return 'Trimester';
+            case '1':
+                return 'ORDINARY LEVEL';
                 break;
-            case 'Masters - Module':
-                return 'Module';
+            case '2':
+                return 'ADVANCED LEVEL';
                 break;
             default:
-                return 'Semester';
+                return 'LEVEL';
         }
     }
 

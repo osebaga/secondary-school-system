@@ -14,7 +14,7 @@
         <div class="boxpane">
             <div class="boxpane-header">
                 <h2 class="blue">
-                    Programme Details
+                    Programme/Combination Details
                 </h2>
             </div>
             <div class="boxpane-content">
@@ -25,21 +25,26 @@
                             <table  id="cprTable" class="tablex table-bordered table-hover table-striped" style="width: 100%;">
                                 <tbody>
                                 <tr>
-                                    <th>Title</th><td>{{$program->program_name}}</td>
+                                    <th>Title</th>
+                                    <td>{{$program->program_name}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Code</th><td>{{$program->program_code}}</td>
+                                    <th>Program Code</th>
+                                    <td>{{$program->program_code}}</td>
                                 </tr>
 
                                 <tr>
-                                    <th>Type</th><td>{{$program->program_type}}</td>
+                                    <th>Level Type</th>
+                                    <td>{{ SRS::program_type($program->program_type) ?? $program->program_type}}</td>
                                 </tr>
                                 
                                 <tr>
-                                    <th>Short Name</th><td>{{$program->program_acronym}}</td>
+                                    <th>Short Name</th>
+                                    <td>{{$program->program_acronym}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Duration</th><td>{{$program->program_duration}}</td>
+                                    <th>Duration</th>
+                                    <td>{{$program->program_duration}}</td>
                                 </tr>
 
                                 </tbody>
@@ -53,11 +58,11 @@
     </div>
         <div class="col-md-4">
         <div class="card">
-            <div class="card-header">Year of Study Semester Module Configuration</div>
+            <div class="card-header">Subject Configuration to Program/combination</div>
             <div class="card-body">
                 <ul class="list-group-flush">
                     @for($i=1;$i<=$program->program_duration;$i++)
-                    <li class="list-group-item">{!! html_entity_decode(link_to(route('program-courses.index',[SRS::encode($program->id),SRS::encode($i)]),(SRS::year_level($i)).' Modules'))!!}</li>
+                    <li class="list-group-item">{!! html_entity_decode(link_to(route('program-courses.index',[SRS::encode($program->id),SRS::encode($i),SRS::encode($program->program_type)]),(SRS::year_level($i,$program->program_type)).' Subjects'))!!}</li>
                     @endfor
                 </ul>
             </div>

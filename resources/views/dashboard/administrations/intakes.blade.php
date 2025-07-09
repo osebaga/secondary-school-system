@@ -14,7 +14,7 @@
             <div class="boxpane">
                 <div class="boxpane-header">
                     <h2 class="blue">
-                        Intake Category
+                        Class Category
                     </h2>
                     <div class="boxpane-icon">
                         <a class="btn btn-sm btn-primary p-1 m-1" href="{{ url()->previous() }}"><i
@@ -25,14 +25,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <p class="introtext">
-                                The following is the list of Intake Category(s) available click batch name to get list of students
+                                The following is the list of Class Category(s) available click class name to get list of students
                             </p>
                             <div class="table-responsive">
                                 <table id="batchTable" class="table table-bordered table-hover" style="width: 100%;">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Intake Category Name</th>
+                                        <th>Class Category Name</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -57,7 +57,7 @@
                          --}}
                         @endif
                         
-                        Intake
+                        Class
                     </td>
 
 
@@ -65,7 +65,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="2" class="bg-inverse white">{{"No Batches"}}</td>
+                                            <td colspan="2" class="bg-inverse white">{{"No Classes"}}</td>
                                         </tr>
                                     @endforelse
                                     <?php $i++?>

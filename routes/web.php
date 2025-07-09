@@ -448,8 +448,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard/programs-courses/program-config/{program}', [ProgrammeCourseController::class, 'programConfiguration'])->name('program-courses.program-config');
     Route::get('dashboard/programs-courses/edit/{program_course}', [ProgrammeCourseController::class, 'edit'])->name('program-courses.edit');
 
-    Route::get('dashboard/programs-courses/{program}/{year_level}', [ProgrammeCourseController::class, 'index'])->name('program-courses.index');
-    Route::get('dashboard/programs-courses/create/{program}/{year_level}', [ProgrammeCourseController::class, 'create'])->name('program-courses.create');
+Route::get('dashboard/programs-courses/{program}/{year_level}/{study_level}', [ProgrammeCourseController::class, 'index'])->name('program-courses.index');
+    Route::get('dashboard/program-subjects/{program_id}/{year_level}/create', [ProgrammeCourseController::class, 'create'])->name('program.subjects.create');
 
     Route::post('dashboard/programs-courses/store', [ProgrammeCourseController::class, 'store'])->name('program-courses.store');
     Route::patch('dashboard/programs-courses/update/{program_course}', [ProgrammeCourseController::class, 'update'])->name('program-courses.update');

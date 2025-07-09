@@ -20,14 +20,14 @@ class CreateCourseProgramTable extends Migration
             $table->foreignId('year_id')->nullable();
             $table->unsignedInteger('year');
             $table->tinyInteger('core');
-            $table->unsignedInteger('semester');
+            $table->unsignedInteger('semester')->nullable();
             $table->timestamps();
             $table->unique(['course_id','program_id','year_id','year']);
             $table->index('course_id');
             $table->index('program_id');
             $table->index('year_id');
             $table->index('year');
-            $table->index('semester');
+            $table->index('semester')->nullable();
             $table->string('stream')->default("A");
             $table->foreign('program_id')->references('id')->on('programs')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('course_id')->references('id')->on('courses')->onUpdate('cascade')->onDelete('cascade');

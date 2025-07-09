@@ -2,7 +2,7 @@
 
 @section('title-content')
 
-<title>{{ config('app.name') }} Campus | Index</title>
+<title>{{ config('app.name') }} School | Index</title>
 
 @endsection
 
@@ -14,7 +14,7 @@
         <div class="boxpane">
             <div class="boxpane-header">
                 <h2 class="blue">
-                    campuses
+                    School
                 </h2>
 
             </div>
@@ -22,13 +22,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <p class="introtext">
-                            The following is the list of campus(s) available click Campus name to continue
+                            The following is the list of school(s) available click School name to continue
                         </p>
                         <div class="table-responsive">
                             <table id="campusTable" class="table table-bordered table-hover" style="width: 100%;">
                                 <thead>
                                 <tr>
-                                    <th>Institution Name</th> <th>Campus Name</th>
+                                    <th>Institution Name</th> <th>School Name</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +63,7 @@
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="2" class="bg-inverse white">{{"No Campus Found"}}</td>
+                                    <td colspan="2" class="bg-inverse white">{{"No School Found"}}</td>
                                 </tr>
                                 @endforelse
                                 <?php $i++?>

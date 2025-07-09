@@ -31,14 +31,14 @@
         <div class="col-md-12">
             <div class="nav-tabs-customx">
                 <ul class="nav nav-tabs tabs-bordered" id="tabMenu">
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link active" href="#coursework" data-toggle="tab" aria-expanded="false">
                             Course Assessment (CA)
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="#courseresult" data-toggle="tab" aria-expanded="false">
-                            End of Semester Examination (ESE)
+                            Student List
                         </a>
                     </li>
                 </ul>
@@ -48,7 +48,7 @@
                         <div class="boxpane">
                             <div class="boxpane-header">
                                 <h2 class="blue">
-                                    Module Name: <b>{{ $course->course_name. '  ('.$course->course_code.') ' }}</b>
+                                    Subject Name: <b>{{ $course->course_name. '  ('.$course->course_code.') ' }}</b>
                                 </h2>
                             </div>
                             <div class="boxpane-content">

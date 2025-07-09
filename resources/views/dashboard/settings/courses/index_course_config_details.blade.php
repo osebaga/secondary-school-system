@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title-content')
-    <title>{{ config('app.name') }} Module</title>
+    <title>{{ config('app.name') }} Subject</title>
 @endsection
 @section('content')
 
@@ -12,7 +12,7 @@
                     <div class="boxpane">
                         <div class="boxpane-header">
                             <h2 class="blue">
-                                Module Details
+                                Subject Details
                             </h2>
 
                             <div class="boxpane-icon">
@@ -30,16 +30,16 @@
                                             style="width: 100%;">
                                             <tbody>
                                                 <tr>
-                                                    <th>Module Code:</th>
+                                                    <th>Subject Code:</th>
                                                     <td>{{ $course->course_code }}</td>
                                                 </tr>
 
                                                 <tr>
-                                                    <th>Module Name:</th>
+                                                    <th>Subject Name:</th>
                                                     <td>{{ $course->course_name }}</td>
                                                 </tr>
 
-                                                <tr>
+                                                {{-- <tr>
                                                     <th>Units/Credits:</th>
                                                     <td>{{ $course->unit . '' }}</td>
                                                 </tr>
@@ -50,15 +50,15 @@
                                                 <tr>
                                                     <th>Maximum SE Score:</th>
                                                     <td>{{ $course->final . '' }}</td>
-                                                </tr>
+                                                </tr> --}}
 
                                                 <tr>
-                                                    <th>NTA Level:</th>
+                                                    <th>Study Level:</th>
                                                     <td>{{ $course->study_level->level_name ?? '' }} </td>
                                                 </tr>
 
                                                 <tr>
-                                                    <th>Tutor/Facilitator :</th>
+                                                    <th>Teacher :</th>
                                                     <td class="p-2">
                                                         @if ($course_staffs->count() > 0)
                                                             @foreach ($course_staffs as $staff)
@@ -76,7 +76,7 @@
                                                             @endforeach
                                                         @else
                                                             <div class="alert alert-warning alert-dismissable">
-                                                                <span class="font-italic">Currently No Tutor/Facilitator
+                                                                <span class="font-italic">Currently No Teacher
                                                                     Assigned</span>
                                                             </div>
                                                         @endif
@@ -104,11 +104,11 @@
                                                                 {!! Form::hidden('year_id', $course_staffs->first()->year_id) !!}
 
                                                                 <div class="form-group p-2">
-                                                                    {!! Form::button('[Remove Tutor/Facilitator]', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger']) !!}
+                                                                    {!! Form::button('[Remove Teacher]', ['type' => 'submit', 'class' => 'btn btn-sm btn-danger']) !!}
                                                                 </div>
                                                                 {!! Form::close() !!}
                                                             @else
-                                                                {{ 'No Tutor/Facilitator' }}
+                                                                {{ 'No Teacher' }}
                                                             @endif
                                                         </td>
                                                     </tr>
@@ -131,13 +131,13 @@
                             <div class="col-md-12">
                                 <div class="form-group required">
                                     {!! html_entity_decode(
-                                        Form::label('staff_id', 'Assign Facilitator for this Module(<b class="blue">' . $course->course_name . '</b>)', [
+                                        Form::label('staff_id', 'Assign Teacher for this Subject(<b class="blue">' . $course->course_name . '</b>)', [
                                             'class' => 'label-control',
                                         ]),
                                     ) !!}
                                     {!! Form::select('staff_id', $staffs, null, [
                                         'id' => 'staff_id',
-                                        'placeholder' => 'Assign Facilitator',
+                                        'placeholder' => 'Assign Teacher',
                                         'class' => 'form-control',
                                     ]) !!}
                                 </div>
@@ -153,7 +153,7 @@
                             </div>
                             <div class="col-md-12 mt-3">
                                 <div class="form-group pull-right">
-                                    {!! Form::button('Assign Facilitator', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                                    {!! Form::button('Assign Teacher', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
                                 </div>
                             </div>
                         </div>
@@ -172,19 +172,19 @@
                     <li class="list-group-item">
                         {{ link_to(route('courses.get-by-intakes', SRS::encode($course->id)), 'Import Results') }}</li>
 
-                        <li class="list-group-item">
-                            {{ link_to(route('get.module.results.by.intakes', SRS::encode($course->id)), 'View CA and ESE Results') }}</li>
+                        {{-- <li class="list-group-item">
+                            {{ link_to(route('get.module.results.by.intakes', SRS::encode($course->id)), 'View CA and ESE Results') }}</li> --}}
     
                     {{--  <li class="list-group-item">{{link_to(route('course.supplementary-student',SRS::encode($course->id)),'Supplementary Students')}}</li> --}}
    
-                    <li class="list-group-item">
+                    {{-- <li class="list-group-item">
                         {{ link_to(route('courses.course-program-participant', SRS::encode($course->id)), 'Related Programme') }}
-                    </li>
+                    </li> --}}
       
 
-                    <li class="list-group-item">
+                    {{-- <li class="list-group-item">
                         {{ link_to(route('endsemestercourse-results', SRS::encode($course->id)), 'End of Semester report') }}
-                    </li>
+                    </li> --}}
                 {{-- </ul> --}}
                 </div>
             </div>

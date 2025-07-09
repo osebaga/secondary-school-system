@@ -56,9 +56,9 @@
                                                     {{$p->program_name}}
                                                 </td>
                                                 <td >
-                                                    {{ $p->program_duration == 1 ? 'One Year' : 
-                                                    ($p->program_duration == 2 ? 'Two Years' : 
-                                                    ($p->program_duration == 3 ? 'Three Years' : '')) }}
+                                                    {{ $p->program_duration == 2 ? 'Two Years' : 
+                                                    ($p->program_duration == 3 ? 'Three Years' : 
+                                                    ($p->program_duration == 4 ? 'Four Years' : '')) }}
                                                 </td>
                                                 <td>
                                                     <?php

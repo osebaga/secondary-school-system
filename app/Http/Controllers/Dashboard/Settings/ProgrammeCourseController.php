@@ -22,6 +22,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
 use Yajra\DataTables\DataTables;
 use Validator;
 use SRS;
@@ -41,8 +42,9 @@ class ProgrammeCourseController extends Controller
 
     }
 
-    public function index($program_id, $year_level)
+    public function index($program_id, $year_level,$study_level)
     {
+        
         if (! Gate::allows('programs-view')) {
             return abort(401);
         }
@@ -50,49 +52,41 @@ class ProgrammeCourseController extends Controller
         try {
             $pid = SRS::decode($program_id)[0];
             $year = SRS::decode($year_level)[0];
+            $study_level = SRS::decode($study_level)[0];
+       
         } catch (\Exception $e) {
             abort(404);
         }
 
-        /*$program=$this->program_model->findWhere('id',$pid)->with(['courses'=>function($q) use($year){
-            $q->where('year','=',$year);
-        }])->first();*/
-        // $program = Program::academicYear()->programId($pid)
-        // ->with(['courses' => function ($q){
-            // $q->where('year', '=', $year);
-            // $q->academicYear();
-            //$q->with('staffs');
-        // }])->first();
         $program = Program::programId($pid)->with(['courses' => function ($q) use($year) {
         $q->where('year','=',$year);
         }])->first();
         //dd($program);
-        $courses_sem1 = array();
-        $courses_sem2 = array();
-        $courses_sem3 = array();
-        $courses_sem4 = array();
+        $subject_form_one = array();
+        $subject_form_two = array();
+        $subject_form_three = array();
+        $subject_form_four = array();
         if (!is_null($program)) {
-            foreach ($program->courses as $course) {
-                if ($course->pivot->semester == 1 ) {
-                    $courses_sem1[] = $course;
-                } elseif ($course->pivot->semester == 2) {
-                    $courses_sem2[] = $course;
-                } elseif ($course->pivot->semester == 3) {
-                    $courses_sem3[] = $course;
-                } elseif ($course->pivot->semester == 4) {
-                    $courses_sem4[] = $course;
+            foreach ($program->courses as $subject) {
+                if ($subject->pivot->year == 1 ) {
+                    $subject_form_one[] = $subject;
+                } elseif ($subject->pivot->year == 2) {
+                    $subject_form_two[] = $subject;
+                } elseif ($subject->pivot->year == 3) {
+                    $subject_form_three[] = $subject;
+                } elseif ($subject->pivot->year == 4) {
+                    $subject_form_four[] = $subject;
                 }
             }
         }
-        // dd($courses_sem1[0]->staffs[0]->user);
-        // dd($courses);
+
         $data['program'] = $program;
         $data['yr'] = $year;
-
-        $data['courses_sem1'] = $courses_sem1;
-        $data['courses_sem2'] = $courses_sem2;
-        $data['courses_sem3'] = $courses_sem3;
-        $data['courses_sem4'] = $courses_sem4;
+        $data['study_level'] = $study_level;
+        $data['courses_sem1'] = $subject_form_one;
+        $data['courses_sem2'] = $subject_form_two;
+        $data['courses_sem3'] = $subject_form_three;
+        $data['courses_sem4'] = $subject_form_four;
         
         return view('dashboard.settings.programs.program_courses.index', $data);
     }
@@ -348,8 +342,8 @@ class ProgrammeCourseController extends Controller
     {
         $data['bc'] = array(['link' => route('dashboard'), 'page' => 'Dashboard'], ['link' => '#', 'page' => 'Assign Course to A program']);
         try {
-            $pid = HelpersSRS::decode($program_id)[0];
-            $year = HelpersSRS::decode($year_level)[0];
+            $pid =SRS::decode($program_id)[0];
+            $year_level = SRS::decode($year_level)[0];
         } catch (\Exception $e) {
             abort(404);
         }
@@ -373,15 +367,20 @@ class ProgrammeCourseController extends Controller
         $data['course_options'] = [
             '' => '',
             '1' => 'Core',
-            '0' => 'Option'
+            '0' => 'Elective'
         ];
 
         $data['course_semester'] = [
             '' => '',
-            '1' => 'Semester I',
-            '2' => 'Semester II',
-
+            '1' => 'Form One',
+            '2' => 'Form Two',
+            '3' => 'Form Three',
+            '4' => 'Form Four',
+            '5' => 'Form Five',
+            '6' => 'Form Six',
         ];
+
+
         $data['courses'] = $courses;
         return view('dashboard.settings.programs.program_courses.create', $data);
     }
@@ -389,28 +388,45 @@ class ProgrammeCourseController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        $validator = Validator::make($input, [
-            'program_id' => 'required',
-            'course_id' => 'required',
-            'year' => 'required',
-            'semester' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return back()->withInput()->with('errors', $validator->errors());
-        }
-        // dd($input);
-        try {
-            $input['program_id'] = SRS::decode($input['program_id'])[0];
-            $input['year'] = SRS::decode($input['year'])[0];
+
+    $validator = Validator::make($input, [
+        'program_id' => 'required',
+        'course_id' => 'required',
+        'year' => 'required',
+        // 'class_group' => 'required',
+    ]);
+
+    if ($validator->fails()) {
+        return back()->withInput()->with('errors', $validator->errors());
+    }
+
+    try {
+        // Safely decode and validate results
+    $decodedProgramId = SRS::decode($input['program_id']);
+    $Year = $input['year'];
+    
+    if (!is_array($decodedProgramId) || !isset($decodedProgramId[0])) {
+        throw new \Exception("Invalid program_id encoding");
+    }
 
 
-            $course = $this->course_model->find($input['course_id']);
+    $input['program_id'] = $decodedProgramId[0];
+    $input['year'] = $Year;
 
-            $course->programs()->attach($input['program_id'], ['year_id' => Auth::user()->staff->year_id, 'year' => $input['year'], 'core' => $input['core'], 'semester' => $input['semester']]);
-        } catch (\Exception $e) {
-            return back()->withInput()->with('error', 'Something Went wrong[course already added] ' . $e);
-        }
-        return back()->with('message', 'success added');
+    $course = $this->course_model->find($input['course_id']);
+
+    $course->programs()->attach($input['program_id'], [
+        'year_id' => Auth::user()->staff->year_id,
+        'year' => $input['year'],
+        'core' => $input['core'] ?? 0
+        // 'semester' => $input['class_group']
+    ]);
+
+} catch (\Exception $e) {
+    return back()->withInput()->with('error', 'Something went wrong, Subject allready exist in this program. code(' . $e->getMessage() . ')');
+}
+
+return back()->with('message', 'Subject added successfully');
 
 
     }
@@ -444,15 +460,17 @@ class ProgrammeCourseController extends Controller
         $data['course_options'] = [
             '' => '',
             '1' => 'Core',
-            '0' => 'Option'
+            '0' => 'Elective'
         ];
 
         $data['course_semester'] = [
             '' => '',
-            '1' => 'One',
-            '2' => 'Two',
-            '3' => 'Three',
-            '4' => 'Four',
+            '1' => 'Form One',
+            '2' => 'Form Two',
+            '3' => 'Form Three',
+            '4' => 'Form Four',
+            '5' => 'Form Five',
+            '6' => 'Form Six',
         ];
         $data['courses'] = $courses;
         $data['program_course'] = $program_course;
@@ -468,14 +486,14 @@ class ProgrammeCourseController extends Controller
             'program_id' => 'required',
             'course_id' => 'required',
             'year' => 'required',
-            'semester' => 'required',
+            // 'semester' => 'required',
         ]);
         if ($validator->fails()) {
             return back()->withInput()->with('errors', $validator->errors());
         }
         //dd($input);
         $data_val['course_id'] = $input['course_id'];
-        $data_val['semester'] = $input['semester'];
+        // $data_val['semester'] = $input['semester'];
         $data_val['core'] = $input['core'];
         try {
             //$input['program_id'] = SRS::decode($input['program_id'])[0];
@@ -486,7 +504,7 @@ class ProgrammeCourseController extends Controller
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Something Went wrong ' . $e->getMessage());
         }
-        return back()->with('message', 'Course Updated Successfully');
+        return back()->with('message', 'Subject Updated Successfully');
 
 
     }
@@ -502,7 +520,7 @@ class ProgrammeCourseController extends Controller
             return response()->json(['Something Went Wrong! code(' . $e->getMessage() . ')']);
 
         }
-        return response()->json(['Program-course Deleted Successfully']);
+        return response()->json(['Program-subject Deleted Successfully']);
 
 
     }
